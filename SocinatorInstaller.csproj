@@ -12,14 +12,24 @@
     <None Remove="favicon.ico" />
     <None Remove="Images\background.png" />
     <None Remove="Images\close.png" />
-    <None Remove="Images\installing1.png" />
     <None Remove="Images\logo.png" />
     <None Remove="Images\startingimage.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Comfortaa\" />
-    <Folder Include="Poppins\" />
+    <None Remove="Rubik\Rubik-Black.ttf" />
+    <None Remove="Rubik\Rubik-BlackItalic.ttf" />
+    <None Remove="Rubik\Rubik-Bold.ttf" />
+    <None Remove="Rubik\Rubik-BoldItalic.ttf" />
+    <None Remove="Rubik\Rubik-ExtraBold.ttf" />
+    <None Remove="Rubik\Rubik-ExtraBoldItalic.ttf" />
+    <None Remove="Rubik\Rubik-Italic-VariableFont_wght.ttf" />
+    <None Remove="Rubik\Rubik-Italic.ttf" />
+    <None Remove="Rubik\Rubik-Light.ttf" />
+    <None Remove="Rubik\Rubik-LightItalic.ttf" />
+    <None Remove="Rubik\Rubik-Medium.ttf" />
+    <None Remove="Rubik\Rubik-MediumItalic.ttf" />
+    <None Remove="Rubik\Rubik-Regular.ttf" />
+    <None Remove="Rubik\Rubik-SemiBold.ttf" />
+    <None Remove="Rubik\Rubik-SemiBoldItalic.ttf" />
+    <None Remove="Rubik\Rubik-VariableFont_wght.ttf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,9 +42,24 @@
     <Resource Include="Images\close.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\installing1.png" />
     <Resource Include="Images\logo.png" />
     <Resource Include="Images\startingimage.png" />
+    <Resource Include="Rubik\Rubik-Black.ttf" />
+    <Resource Include="Rubik\Rubik-BlackItalic.ttf" />
+    <Resource Include="Rubik\Rubik-Bold.ttf" />
+    <Resource Include="Rubik\Rubik-BoldItalic.ttf" />
+    <Resource Include="Rubik\Rubik-ExtraBold.ttf" />
+    <Resource Include="Rubik\Rubik-ExtraBoldItalic.ttf" />
+    <Resource Include="Rubik\Rubik-Italic-VariableFont_wght.ttf" />
+    <Resource Include="Rubik\Rubik-Italic.ttf" />
+    <Resource Include="Rubik\Rubik-Light.ttf" />
+    <Resource Include="Rubik\Rubik-LightItalic.ttf" />
+    <Resource Include="Rubik\Rubik-Medium.ttf" />
+    <Resource Include="Rubik\Rubik-MediumItalic.ttf" />
+    <Resource Include="Rubik\Rubik-Regular.ttf" />
+    <Resource Include="Rubik\Rubik-SemiBold.ttf" />
+    <Resource Include="Rubik\Rubik-SemiBoldItalic.ttf" />
+    <Resource Include="Rubik\Rubik-VariableFont_wght.ttf" />
   </ItemGroup>
 
 </Project>
