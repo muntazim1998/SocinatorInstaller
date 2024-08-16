@@ -1,0 +1,37 @@
+﻿<Application x:Class="SocinatorInstaller.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SocinatorInstaller"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!--<FontFamily x:Key="PoppinsBlack">pack://application:,,,/Poppins/#Poppins-Black.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsBlackItalic">pack://application:,,,/Poppins/#Poppins-BlackItalic.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsBold">pack://application:,,,/Poppins/#Poppins-Bold.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsBoldItalic">pack://application:,,,/Poppins/#Poppins-BoldItalic.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsExtaBold">pack://application:,,,/Poppins/#Poppins-ExtraBold.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsExtraBoldItalic">pack://application:,,,/Poppins/#Poppins-ExtraBoldItalic.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsExtraLight">pack://application:,,,/Poppins/#Poppins-ExtraLight.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsExtraLightItalic">pack://application:,,,/Poppins/#Poppins-ExtraLightItalic.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsItalic">pack://application:,,,/Poppins/#Poppins-Italic.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsLight">pack://application:,,,/Poppins/#Poppins-Light.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsLightItalic">pack://application:,,,/Poppins/#Poppins-LightItalic.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsMedium">pack://application:,,,/Poppins/#Poppins-Medium.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsMediumItalic">pack://application:,,,/Poppins/#Poppins-MediumItalic.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsRegular">pack://application:,,,/Poppins/#Poppins-Regular.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsSemiBold">pack://application:,,,/Poppins/#Poppins-SemiBold.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsSemiBoldItalic">pack://application:,,,/Poppins/#Poppins-SemiBoldItalic.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsThin">pack://application:,,,/Poppins/#Poppins-Thin.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsThinItalic">pack://application:,,,/Poppins/#Poppins-ThinItalic.ttf</FontFamily>-->
+
+        <FontFamily x:Key="RubikBold">pack://application:,,,/Rubik/Rubik-Bold.ttf#Rubik</FontFamily>
+        <FontFamily x:Key="RubikLight">pack://application:,,,/Rubik/Rubik-Light.ttf#Rubik</FontFamily>
+        <FontFamily x:Key="RubikRegular">pack://application:,,,/Rubik/Rubik-Regular.ttf#Rubik</FontFamily>
+         <FontFamily x:Key="RubikMedium">pack://application:,,,/Rubik/Rubik-Medium.ttf#Rubik</FontFamily>
+        <FontFamily x:Key="RubikSemiBold">pack://application:,,,/Rubik/Rubik-SemiBold.ttf#Rubik</FontFamily>
+        <FontFamily x:Key="ComfortaaBold">pack://application:,,,/Comfortaa/Comfortaa-Bold.ttf#Comfortaa</FontFamily>
+        <FontFamily x:Key="ComfortaaLight">pack://application:,,,/Comfortaa/Comfortaa-Light.ttf#Comfortaa</FontFamily>
+        <FontFamily x:Key="ComfortaaRegular">pack://application:,,,/Comfortaa/Comfortaa-Regular.ttf#Comfortaa</FontFamily>
+        <FontFamily x:Key="ComfortaaSemiBold">pack://application:,,,/Comfortaa/Comfortaa-SemiBold.ttf#Comfortaa</FontFamily>
+        <FontFamily x:Key="ComfortaaMedium">pack://application:,,,/Comfortaa/Comfortaa-Medium.ttf#Comfortaa</FontFamily>
+    </Application.Resources>
+</Application>

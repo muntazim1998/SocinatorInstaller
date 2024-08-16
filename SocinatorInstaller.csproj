@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="favicon.ico" />
+    <None Remove="Images\background.png" />
+    <None Remove="Images\close.png" />
+    <None Remove="Images\installing1.png" />
+    <None Remove="Images\logo.png" />
+    <None Remove="Images\startingimage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Comfortaa\" />
+    <Folder Include="Poppins\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="favicon.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\background.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\close.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\installing1.png" />
+    <Resource Include="Images\logo.png" />
+    <Resource Include="Images\startingimage.png" />
+  </ItemGroup>
+
+</Project>
