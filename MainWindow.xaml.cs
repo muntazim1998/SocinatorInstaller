@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.Win32;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
@@ -300,6 +301,21 @@ namespace SocinatorInstaller
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void DiskCostBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Browsebtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFolderDialog dialog = new OpenFolderDialog();
+            var result = dialog.ShowDialog();
+            if (result.Value)
+            {
+                pathTextbox.Text = dialog.FolderName;
+            }
         }
     }
 }
