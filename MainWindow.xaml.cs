@@ -1,5 +1,10 @@
 ﻿using Microsoft.Win32;
+using SocinatorInstaller.Utility;
+using System;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
@@ -87,6 +92,7 @@ namespace SocinatorInstaller
                 }
             }
         }
+
         private int step1Width = 40;
 
         public int Step1Width
@@ -120,11 +126,54 @@ namespace SocinatorInstaller
         Color color1 = (Color)ColorConverter.ConvertFromString("#B0CB0E");
         Color color2 = (Color)ColorConverter.ConvertFromString("#38BBC8");
 
-        LinearGradientBrush gradientBrush = new LinearGradientBrush
+       public LinearGradientBrush gradientBrush = new LinearGradientBrush
         {
             StartPoint = new Point(0, 0),
             EndPoint = new Point(1, 0)
         };
+       
+        private double _cancelBtnOpacity = 1.0;
+
+        public double CancelBtnOpacity
+        {
+            get { return _cancelBtnOpacity; }
+            set
+            {
+                if (_cancelBtnOpacity != value)
+                {
+                    _cancelBtnOpacity = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        private double _backBtnOpacity = 1.0;
+
+        public double BackBtnOpacity
+        {
+            get { return _backBtnOpacity; }
+            set
+            {
+                if (_backBtnOpacity != value)
+                {
+                    _backBtnOpacity = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        private double _nextBtnOpacity = 1.0;
+
+        public double NextBtnOpacity
+        {
+            get { return _nextBtnOpacity; }
+            set
+            {
+                if (_nextBtnOpacity != value)
+                {
+                    _nextBtnOpacity = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public MainWindow()
         {
@@ -132,8 +181,8 @@ namespace SocinatorInstaller
             DataContext = this;
             gradientBrush.GradientStops.Add(new GradientStop(color1, 0.0));
             gradientBrush.GradientStops.Add(new GradientStop(color2, 1.0));
-
             // Apply the brush to the Rectangle's Fill
+            
             gradientRectangle1.Fill = gradientBrush;
             gradientRectangle2.Fill = gradientBrush;
             gradientRectangle3.Fill = gradientBrush;
@@ -141,7 +190,7 @@ namespace SocinatorInstaller
 
         }
 
-        private void click_NextBtn(object sender, RoutedEventArgs e)
+        private  void click_NextBtn(object sender, RoutedEventArgs e)
         {
             if (NxtButtonCount == 1)
             {
@@ -169,18 +218,24 @@ namespace SocinatorInstaller
             else if (NxtButtonCount == 3)
             {
                 ConfirmationGrid.Visibility = Visibility.Collapsed;
-                //LOGIC FOR INSTALLATION COMPLETE
-                InstallationCompleteGrid.Visibility = Visibility.Visible;
                 Step3Width = 20;
                 Step3Opacity = 0.5;
                 Step4Width = 40;
                 Step4Opacity = 1;
-                CancelBtnBorder.Visibility = Visibility.Collapsed;
-                BackBtnBorder.Visibility = Visibility.Collapsed;
-                NextBtnBorder.Visibility = Visibility.Collapsed;
-                CloseBtnBorder.Visibility = Visibility.Visible;
+                CancelBtnOpacity = 0.5;
+                CancelBtn.IsEnabled = false;
+                BackBtnOpacity = 0.5;
+                BackBtn.IsEnabled = false;
+                NextBtnOpacity = 0.5;
+                btn_Next.IsEnabled = false;
+                InstallingGrid.Visibility = Visibility.Visible;
+                InstallSocinator();
+         //       Task.Delay(35000);
+                //LOGIC FOR INSTALLATION COMPLETE
+                
                 NxtButtonCount++;
             }
+
 
         }
         private void BackBtn_Click(object sender, RoutedEventArgs e)
@@ -208,6 +263,132 @@ namespace SocinatorInstaller
                 NxtButtonCount=1;
                 BackButtonCount=0;
             }
+        }
+        string filename = "";
+        private void InstallSocinator()
+        {
+          Task.Factory.StartNew(async () =>
+            {
+                filename = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"/Temp/power_installer.exe";
+               
+                //Process.Start(uri.AbsolutePath);
+                //await Task.Delay(15000);
+                //this.Dispatcher.Invoke(() =>
+                //{
+                //    txt_message.Text = "Intallation Completed";
+                //});
+                //return;
+                try
+                {
+                    await Task.Delay(2000);
+                    if (File.Exists(filename))
+                    {
+                        File.Delete(filename);
+                        File.Create(filename).Close();
+                    }
+                    else
+                    {
+                        File.Create(filename).Close();
+                    }
+                    WebClient wc = new WebClient();
+                    wc.DownloadFileAsync(InstallerConstants.uri, filename);
+                    wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(wc_DownloadProgressChanged);
+                    wc.DownloadFileCompleted += new AsyncCompletedEventHandler(wc_DownloadFileCompleted);
+                }
+                catch (Exception ex)
+                {
+                    txt_message.Text = "Failed to Download/Install.";
+                }
+            });
+        }
+        private async void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+
+            await App.Current.Dispatcher.InvokeAsync(async () =>
+            {
+                try
+                {
+                    installingProgressStyle.Value = e.ProgressPercentage;
+                    if (installingProgressStyle.Value == installingProgressStyle.Maximum)
+                    {
+
+                    }
+                }
+                catch (Exception)
+                {
+                    installingProgressStyle.Value = 0;
+                    //txt_message.Text = "Failed";
+                    //btn_Retry.Visibility = Visibility.Visible;
+                }
+            });
+        }
+        private async void wc_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            await App.Current.Dispatcher.InvokeAsync(async () =>
+            {
+                if (e.Error == null)
+                {
+                    await Task.Delay(1000);
+                    InstallingGrid.Visibility = Visibility.Collapsed;
+                    InstallationCompleteGrid.Visibility = Visibility.Visible;
+                    CancelBtnBorder.Visibility = Visibility.Collapsed;
+                    BackBtnBorder.Visibility = Visibility.Collapsed;
+                    NextBtnBorder.Visibility = Visibility.Collapsed;
+                    CloseBtnBorder.Visibility = Visibility.Visible;
+                    buttonStackPanel.HorizontalAlignment = HorizontalAlignment.Center;
+                    //try
+                    //{
+                    //    txt_message.Text = "Download complete!";
+                    //    txt_message.Text = "Preparing to install...";
+                    //    txt_message.Text = "Installation is in progress. Please wait...";
+                    //    IsUnzippingCompleted = false;
+
+                    //    customProgressStyle.Value = 20;
+                    //    RemoveDirectories(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Power");
+                    //    var dir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Power";
+                    //    if (Directory.Exists(dir))
+                    //    {
+                    //        Directory.Delete(dir, true);
+                    //    }
+                    //    //       ProcessUnzip();
+                    //    //      await ExctractFile();
+                    //    customProgressStyle.Value = 100;
+                    //    IsUnzippingCompleted = true;
+                    //    Uri filepath = new Uri(filename);
+
+                    //    await CreateInstaller(filepath);
+                    //    var installationData = checkInstalled("Power");
+                    //    var installedVersion = installationData[2];
+                    //    var filesource = System.Reflection.Assembly.GetEntryAssembly().Location;
+                    //    var dest = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\PowerSoftware\Power-Browser\Application\" + installedVersion + @"\Installer\setup.exe";
+                    //    var OldInstaller = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\PowerSoftware\Power-Browser\Application\" + installedVersion + @"\Installer\setup1.exe";
+                    //    if (File.Exists(dest))
+                    //    {
+                    //        File.Move(dest, OldInstaller);
+                    //        await Task.Delay(2000);
+                    //        File.Delete(dest);
+                    //    }
+
+                    //    File.Copy(filesource, dest, true);
+                    //    //createShortcut();
+                    //    txt_message.Text = "Installed successfully";
+                    //    if (IsLaunch)
+                    //    {
+                    //        var process = Process.Start(UninstallRegKeyPath);
+                    //        await Task.Delay(2000);
+                    //    }
+                    //}
+                    //catch (Exception ex)
+                    //{ }
+                    //App.Current.Shutdown();
+                }
+                else
+                {
+                    //txt_message.Text = "Unable to download, please check your internet connection.";
+                    //ShowMessageModal(true, "Unable to download, please check your internet connection.");
+                    //btn_Retry.Visibility = Visibility.Visible;
+                }
+            });
         }
 
         private void click_CloseBtn(object sender, RoutedEventArgs e)
@@ -316,6 +497,11 @@ namespace SocinatorInstaller
             {
                 pathTextbox.Text = dialog.FolderName;
             }
+        }
+
+        private void installingProgressStyle_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
         }
     }
 }

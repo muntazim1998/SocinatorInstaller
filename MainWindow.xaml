@@ -91,9 +91,9 @@
         </Style>
 
     </Window.Resources>
-        <Grid>
-            <Grid.ColumnDefinitions>
-               <ColumnDefinition Width="1*"/>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
@@ -106,7 +106,7 @@
                 </Grid.RowDefinitions>
                 <StackPanel Grid.Row="0" VerticalAlignment="Top">
                     <TextBlock Foreground="White" TextWrapping="Wrap" FontSize="20" >
-                        Socinator : Social Media AUtomation and Marketing Tool
+                        Socinator : Social Media Automation and Marketing Tool
                     </TextBlock>
                 </StackPanel>
                 <Grid Grid.Row="1"/>
@@ -117,43 +117,43 @@
 
 
         <Grid Grid.Column="1" >
-            
-          <Grid VerticalAlignment="Top" Margin="15,15" HorizontalAlignment="Right">
-                <Button FontSize="14" ToolTip="Close" Height="15" Width="15" Padding="15,10,15,10" Click="click_CloseBtn" FontFamily="{StaticResource RubikLight}" Foreground="#FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Left">
-                        <Button.Style>
-                            <Style TargetType="{x:Type Button}">
-                                <Setter Property="Opacity" Value="0.5"/>
-                                <Setter Property="Background">
-                                    <Setter.Value>
-                                        <ImageBrush ImageSource="Images/close.png"/>
-                                    </Setter.Value>
-                                </Setter>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Grid Background="{TemplateBinding Background}">
-                                                <ContentPresenter />
-                                            </Grid>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background">
-                                            <Setter.Value>
-                                                <ImageBrush ImageSource="Images/close.png"/>
-                                            </Setter.Value>
 
-                                        </Setter>
-                                        <Setter Property="Opacity" Value="1"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
-                </Grid>
-           
-            
+            <Grid VerticalAlignment="Top" Margin="15,15" HorizontalAlignment="Right">
+                <Button FontSize="14" ToolTip="Close" Height="15" Width="15" Padding="15,10,15,10" Click="click_CloseBtn" FontFamily="{StaticResource RubikLight}" Foreground="#FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Opacity" Value="0.5"/>
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="Images/close.png"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Grid Background="{TemplateBinding Background}">
+                                            <ContentPresenter />
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <ImageBrush ImageSource="Images/close.png"/>
+                                        </Setter.Value>
+
+                                    </Setter>
+                                    <Setter Property="Opacity" Value="1"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+
+
             <Border CornerRadius="15" Background="White" Margin="15,30,30,30">
 
                 <Grid x:Name="MainGrid" >
@@ -266,7 +266,7 @@
                             <TextBlock Padding="20,0,25,0"  TextWrapping="Wrap" Block.LineStackingStrategy="BlockLineHeight" Block.LineHeight="25"  FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" Foreground="#000000" VerticalAlignment="Top" HorizontalAlignment="Center">
                            Install Socinator for yourself, or for anyone who uses this computer.
                             </TextBlock>
-                            
+
                             <RadioButton Name="EveryOneBtn" Content="Everyone" FontFamily="{StaticResource RubikRegular}" FontSize="12" Margin="30,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="False"/>
                             <RadioButton Name="JustMeBtn"  Content="Just me" FontFamily="{StaticResource RubikRegular}" FontSize="12" Margin="30,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="True"/>
                         </StackPanel>
@@ -277,17 +277,98 @@
                         <StackPanel >
                             <TextBlock Text="Confirm Installation" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" FontSize="18" Foreground="#22357A" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                             <TextBlock Margin="20 10 20 10" TextAlignment="Center" TextWrapping="Wrap" Block.LineStackingStrategy="BlockLineHeight" Block.LineHeight="20"  FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" Opacity="0.8" Foreground="#000000" VerticalAlignment="Top" HorizontalAlignment="Center">
-                            The installer is ready to install Socinator on your computer.
+                            Socinator has been successfully installed
                             </TextBlock>
                             <TextBlock Margin="20 0" TextAlignment="Center" TextWrapping="Wrap" Opacity="0.8" Block.LineStackingStrategy="BlockLineHeight" Block.LineHeight="20"  FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" Foreground="#000000" VerticalAlignment="Top" HorizontalAlignment="Center">
                                 <Run Text="Click " FontFamily="{StaticResource RubikRegular}" FontWeight="Normal"/>
-                                <Run Text="“Next”" FontFamily="{StaticResource RubikRegular}" FontSize="12" Foreground="#092E5A" FontWeight="Medium"/>
+                                <Run Text="“Next”" FontFamily="{StaticResource RubikMedium}" FontSize="12" Foreground="#092E5A" FontWeight="Medium"/>
                                 <Run Text=" to start the installation." FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal"/>
                             </TextBlock>
                         </StackPanel>
                     </Grid>
-                    <Grid Grid.Row="1" Name="InstallationCompleteGrid" Visibility="Collapsed">
-                        
+                    <Grid Grid.Row="1" Name="InstallingGrid" Visibility="Collapsed">
+                        <StackPanel >
+                            <TextBlock Text="Installing Socinator"  FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" FontSize="18" Foreground="#22357A" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                            <TextBlock Margin="20 10 20 10" TextAlignment="Center" TextWrapping="Wrap" Block.LineStackingStrategy="BlockLineHeight" Block.LineHeight="20"  FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" Opacity="0.8" Foreground="#000000" VerticalAlignment="Top" HorizontalAlignment="Center">
+                                        Socinator is being installed
+                            </TextBlock>
+                            <Grid Margin="0 ,50,0,0">
+                                <ProgressBar Name="installingProgressStyle" Width="300" Value="0" Maximum="100" VerticalAlignment="Center" HorizontalAlignment="Center" ValueChanged="installingProgressStyle_ValueChanged">
+                                    <ProgressBar.Style>
+                                        <Style TargetType="{x:Type ProgressBar}">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ProgressBar}">
+                                                        <Grid Height="12" MinWidth="30" Background="#FFFFFF">
+                                                            <VisualStateManager.VisualStateGroups>
+                                                                <VisualStateGroup x:Name="CommonStates">
+                                                                    <VisualState x:Name="Determinate" />
+                                                                    <VisualState x:Name="Indeterminate">
+                                                                        <Storyboard>
+                                                                            <ObjectAnimationUsingKeyFrames Duration="00:00:00"
+                                                   Storyboard.TargetName="PART_Indicator"
+                                                   Storyboard.TargetProperty="Background">
+                                                                                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                                                                    <DiscreteObjectKeyFrame.Value>
+                                                                                        <SolidColorBrush>Transparent</SolidColorBrush>
+                                                                                    </DiscreteObjectKeyFrame.Value>
+                                                                                </DiscreteObjectKeyFrame>
+                                                                            </ObjectAnimationUsingKeyFrames>
+
+                                                                        </Storyboard>
+                                                                    </VisualState>
+                                                                </VisualStateGroup>
+                                                            </VisualStateManager.VisualStateGroups>
+                                                            <Border x:Name="PART_Track" CornerRadius="5"  Opacity="0.5" BorderThickness="0"
+                                                       BorderBrush="Transparent" Height="12" VerticalAlignment="Top">
+                                                                <Border.Background>
+                                                                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                                                        <GradientStop Color="#a6c94a" Offset="1.2"/>
+                                                                        <GradientStop Color="#69be9b" Offset="0"/>
+                                                                    </LinearGradientBrush>
+                                                                </Border.Background>
+                                                            </Border>
+
+                                                            <Border CornerRadius="5" BorderThickness="0" x:Name="PART_Indicator"
+                                                      BorderBrush="Transparent" HorizontalAlignment="Left">
+                                                                <Border.Background>
+                                                                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                                                        <GradientStop Color="#a6c94a" Offset="1.2"/>
+                                                                        <GradientStop Color="#69be9b" Offset="0"/>
+                                                                    </LinearGradientBrush>
+                                                                </Border.Background>
+                                                            </Border>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="Foreground" Value="Transparent" />
+                                        </Style>
+                                    </ProgressBar.Style>
+                                </ProgressBar>
+                            </Grid>
+                            
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1" Name="InstallationCompleteGrid" Visibility="Collapsed" >
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel HorizontalAlignment="Center" Width="81" Height="81" Margin="0,20,0,0">
+                                <Image Source="Images/completed.png" Height="81" Width="81" />
+                            </StackPanel>
+                            <StackPanel Margin="0,20,0,0" >
+                                <TextBlock Text="Installation Completed" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" FontSize="18" Foreground="#22357A" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                                <TextBlock Margin="20 10 20 10" TextAlignment="Center" TextWrapping="Wrap" Block.LineStackingStrategy="BlockLineHeight" Block.LineHeight="20"  FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" Opacity="0.8" Foreground="#000000" VerticalAlignment="Top" HorizontalAlignment="Center">
+The installer is ready to install Socinator on your computer.
+                                </TextBlock>
+                                <TextBlock  TextAlignment="Center" TextWrapping="Wrap" Opacity="0.8" Block.LineStackingStrategy="BlockLineHeight" Block.LineHeight="10"  FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" Foreground="#000000" VerticalAlignment="Top" HorizontalAlignment="Center">
+    <Run Text="Click " FontFamily="{StaticResource RubikRegular}" FontWeight="Normal"/>
+    <Run Text="“Close”" FontFamily="{StaticResource RubikMedium}" FontSize="12" Foreground="#092E5A" FontWeight="Medium"/>
+    <Run Text=" to exit." FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+
                     </Grid>
                     <Grid Grid.Row="1" Name="alreadyInstalled" Visibility="Collapsed">
                         <Grid Width="700" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -611,9 +692,9 @@
                             <Rectangle x:Name="gradientRectangle4" Opacity="{Binding Step4Opacity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="{Binding Step4Width,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Height="10" Margin="5" RadiusX="5" RadiusY="5"
                              />
                         </StackPanel>
-                        <StackPanel  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,15,15" Grid.Row="2" Grid.Column="0" Orientation="Horizontal" >
-                            <Border x:Name="CloseBtnBorder" Visibility="Collapsed"  BorderBrush="White" BorderThickness="0.8" CornerRadius="5" Height="35" Margin="0,0,20,0" HorizontalAlignment="Center">
-                                <Button Name="CloseBtn" Content="Close"  BorderThickness="1" BorderBrush="White" FontSize="12" Height="35" Padding="15,10,15,10" Click="click_NextBtn" FontFamily="{StaticResource RubikRegular}" Foreground="#FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <StackPanel x:Name="buttonStackPanel" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,15,15" Grid.Row="2" Grid.Column="0" Orientation="Horizontal" >
+                            <Border x:Name="CloseBtnBorder" Visibility="Collapsed"  BorderBrush="White" BorderThickness="0.8" CornerRadius="5" Height="35" Margin="30,0,20,0" HorizontalAlignment="Center">
+                                <Button Name="CloseBtn" Content="Close"  BorderThickness="1" BorderBrush="White" FontSize="12" Height="35" Padding="15,10,15,10" Click="click_CloseBtn" FontFamily="{StaticResource RubikRegular}" Foreground="#FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Center">
                                     <Button.Style>
                                         <Style TargetType="{x:Type Button}">
                                             <Setter Property="Background" Value="#092E5A"/>
@@ -658,9 +739,9 @@
                                     </Button.Style>
                                 </Button>
                             </Border>
-                            <Border x:Name="CancelBtnBorder"  BorderBrush="#092E5A" BorderThickness="2" CornerRadius="3" Height="35" Margin="0,0,20,0">
+                            <Border x:Name="CancelBtnBorder" Visibility="Visible" Opacity="{Binding CancelBtnOpacity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  BorderBrush="#092E5A" BorderThickness="2" CornerRadius="3" Height="35" Margin="0,0,20,0" HorizontalAlignment="Right">
                                 <Button Name="CancelBtn" Content="Cancel"  BorderThickness="0" BorderBrush="Transparent" FontSize="14" Height="35" Padding="15,10,15,10" Click="click_Cancel" FontFamily="{StaticResource RubikRegular}" 
-                                 Foreground="#092E5A" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                 Foreground="#092E5A" VerticalAlignment="Center" HorizontalAlignment="Center">
                                     <Button.Style>
                                         <Style TargetType="{x:Type Button}">
                                             <Setter Property="Background" Value="#FFFFFF"/>
@@ -705,9 +786,9 @@
                                     </Button.Style>
                                 </Button>
                             </Border>
-                            <Border x:Name="BackBtnBorder" Visibility="Collapsed" BorderBrush="#092E5A" BorderThickness="2" CornerRadius="3" Height="35" Margin="0,0,20,0">
+                            <Border x:Name="BackBtnBorder" Opacity="{Binding BackBtnOpacity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed" BorderBrush="#092E5A" BorderThickness="2" CornerRadius="3" Height="35" Margin="0,0,20,0" HorizontalAlignment="Right">
                                 <Button Name="BackBtn" Content="&lt; Back"  BorderThickness="0" BorderBrush="Transparent" FontSize="14" Height="35" Padding="15,10,15,10" Click="BackBtn_Click" FontFamily="{StaticResource RubikRegular}" 
-                                  Foreground="#092E5A" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                  Foreground="#092E5A" VerticalAlignment="Center" HorizontalAlignment="Center">
                                     <Button.Style>
                                         <Style TargetType="{x:Type Button}">
                                             <Setter Property="Background" Value="#FFFFFF"/>
@@ -752,9 +833,9 @@
                                     </Button.Style>
                                 </Button>
                             </Border>
-                           
-                            <Border x:Name="NextBtnBorder"  BorderBrush="White" BorderThickness="0.8" CornerRadius="5" Height="35">
-                                <Button Name="btn_Next" Content="Next >"  BorderThickness="1" BorderBrush="White" FontSize="12" Height="35" Padding="15,10,15,10" Click="click_NextBtn" FontFamily="{StaticResource RubikRegular}" Foreground="#FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Left">
+
+                            <Border x:Name="NextBtnBorder" Visibility="Visible"  Opacity="{Binding NextBtnOpacity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" BorderBrush="White" BorderThickness="0.8" CornerRadius="5" Height="35" HorizontalAlignment="Right">
+                                <Button Name="btn_Next" Content="Next >"  BorderThickness="1" BorderBrush="White" FontSize="12" Height="35" Padding="15,10,15,10" Click="click_NextBtn" FontFamily="{StaticResource RubikRegular}" Foreground="#FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Center">
                                     <Button.Style>
                                         <Style TargetType="{x:Type Button}">
                                             <Setter Property="Background" Value="#092E5A"/>
@@ -806,130 +887,130 @@
                 </Grid>
             </Border>
             <Grid Name="OptionPage" Visibility="Collapsed">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="180"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid>
-                        <!--<StackPanel Grid.Row="1" Margin="69,10,10,10" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="80">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="180"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <!--<StackPanel Grid.Row="1" Margin="69,10,10,10" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="80">
                             <Border BorderBrush="Transparent" BorderThickness="0" Height="70" Width="70">
                                 <Image Source="Images/white 2.png"/>
                             </Border>
                             <Image Source="Images/POWER WEB3 BROWSER.png" Margin="-10,0,0,0" Height="40" Opacity="1" Width="150" />
                         </StackPanel>-->
-                    </Grid>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Orientation="Vertical" Grid.Column="0" Margin="75,0,0,0">
-                            <TextBlock Text="Language" FontFamily="{StaticResource RubikLight}" Margin="0,10" Foreground="#FFFFFF" FontSize="14"/>
-                            <Border CornerRadius="5" Background="#7536BD" BorderBrush="#FFFFFF"  Height="35" HorizontalAlignment="Left" Width="300" BorderThickness="1" Opacity="0.7">
-                                <TextBlock Margin="10,3" Name="txt_language" Text="N/A" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFFFFF" FontSize="14" FontFamily="{DynamicResource RubikRegular}"/>
-                            </Border>
-                        </StackPanel>
-                        <StackPanel Grid.Column="1">
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Vertical" Grid.Column="0" Margin="75,0,0,0">
+                        <TextBlock Text="Language" FontFamily="{StaticResource RubikLight}" Margin="0,10" Foreground="#FFFFFF" FontSize="14"/>
+                        <Border CornerRadius="5" Background="#7536BD" BorderBrush="#FFFFFF"  Height="35" HorizontalAlignment="Left" Width="300" BorderThickness="1" Opacity="0.7">
+                            <TextBlock Margin="10,3" Name="txt_language" Text="N/A" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFFFFF" FontSize="14" FontFamily="{DynamicResource RubikRegular}"/>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
                         <TextBlock Text="Install for" FontFamily="{StaticResource RubikLight}" Margin="0,10" Foreground="#FFFFFF" FontSize="14"/>
-                            <Border CornerRadius="5" Background="#7536BD" BorderBrush="#FFFFFF" Height="35" HorizontalAlignment="Left" Width="300" BorderThickness="1" Opacity="0.7">
-                                <TextBlock Margin="10,3" Name="txt_user" Text="Current User" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFFFFF" FontSize="14" FontFamily="{DynamicResource RubikRegular}"/>
-                            </Border>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Grid.Row="2" >
-                        <StackPanel Margin="75,0,0,0">
+                        <Border CornerRadius="5" Background="#7536BD" BorderBrush="#FFFFFF" Height="35" HorizontalAlignment="Left" Width="300" BorderThickness="1" Opacity="0.7">
+                            <TextBlock Margin="10,3" Name="txt_user" Text="Current User" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFFFFF" FontSize="14" FontFamily="{DynamicResource RubikRegular}"/>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="2" >
+                    <StackPanel Margin="75,0,0,0">
                         <TextBlock Text="Install Path" FontFamily="{StaticResource RubikLight}" Margin="0,10" Foreground="#FFFFFF" FontSize="14"/>
-                            <Border CornerRadius="5" Background="#7536BD" BorderBrush="#FFFFFF" Height="35" HorizontalAlignment="Left" Width="625" BorderThickness="1" Opacity="0.7">
-                                <TextBlock Name="txt_path" Margin="10,3" Text="" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFFFFF" FontSize="14" FontFamily="{DynamicResource RubikRegular}"/>
-                            </Border>
+                        <Border CornerRadius="5" Background="#7536BD" BorderBrush="#FFFFFF" Height="35" HorizontalAlignment="Left" Width="625" BorderThickness="1" Opacity="0.7">
+                            <TextBlock Name="txt_path" Margin="10,3" Text="" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFFFFF" FontSize="14" FontFamily="{DynamicResource RubikRegular}"/>
+                        </Border>
                         <CheckBox Content="Launch after successful installation" IsChecked="True" Focusable="False" Checked="chk_checked_lauch" Unchecked="chk_unchecked_launch" FontSize="14" Margin="5,30,0,0" Foreground="Yellow"  FontFamily="{StaticResource RubikLight}"/>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Grid.Row="3">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="75,0,100,0">
-                            <Border BorderBrush="White" BorderThickness="0.8" Height="35" Margin="10,0,0,0" CornerRadius="5">
-                                <Button Content="Back" Height="35" FontSize="12"  Padding="15,10,15,10" Click="click_BackBtn" FontFamily="{StaticResource RubikRegular}" Foreground="#FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Left">
-                                    <Button.Style>
-                                        <Style TargetType="{x:Type Button}">
-                                            <Setter Property="Background" Value="#2e3e60"/>
-                                            <Setter Property="Opacity" Value="0.9"/>
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType="{x:Type Button}">
-                                                        <Border CornerRadius="5" Padding="25,10,25,10" Background="{TemplateBinding Background}" BorderBrush="#ffffff">
-                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                        </Border>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                            <Style.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Background">
-                                                        <Setter.Value>
-                                                            <!--<LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="3">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="75,0,100,0">
+                        <Border BorderBrush="White" BorderThickness="0.8" Height="35" Margin="10,0,0,0" CornerRadius="5">
+                            <Button Content="Back" Height="35" FontSize="12"  Padding="15,10,15,10" Click="click_BackBtn" FontFamily="{StaticResource RubikRegular}" Foreground="#FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <Button.Style>
+                                    <Style TargetType="{x:Type Button}">
+                                        <Setter Property="Background" Value="#2e3e60"/>
+                                        <Setter Property="Opacity" Value="0.9"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type Button}">
+                                                    <Border CornerRadius="5" Padding="25,10,25,10" Background="{TemplateBinding Background}" BorderBrush="#ffffff">
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background">
+                                                    <Setter.Value>
+                                                        <!--<LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
                                 <GradientStop Color="#732EBB" Offset="0.1"/>
                                 <GradientStop Color="#EE466A" Offset="1"/>
                             </LinearGradientBrush>-->
-                                                            <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                                                                <GradientStop Color="#a6c94a" Offset="1.2"/>
-                                                                <GradientStop Color="#69be9b" Offset="0"/>
-                                                                <LinearGradientBrush.RelativeTransform>
-                                                                    <RotateTransform Angle="85"/>
-                                                                </LinearGradientBrush.RelativeTransform>
-                                                            </LinearGradientBrush>
-                                                        </Setter.Value>
-                                                    </Setter>
-                                                    <Setter Property="Opacity" Value="1"/>
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>
-                                </Button>
-                            </Border>
-                            <Border BorderBrush="White" BorderThickness="0.8" CornerRadius="5" Height="35" Margin="10,0,0,0" >
-                                <Button Content="Accept and Install"  FontSize="12" Click="click_ButtonAccptInstall" FontFamily="{StaticResource RubikRegular}" Foreground="#FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                                            <GradientStop Color="#a6c94a" Offset="1.2"/>
+                                                            <GradientStop Color="#69be9b" Offset="0"/>
+                                                            <LinearGradientBrush.RelativeTransform>
+                                                                <RotateTransform Angle="85"/>
+                                                            </LinearGradientBrush.RelativeTransform>
+                                                        </LinearGradientBrush>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="Opacity" Value="1"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </Border>
+                        <Border BorderBrush="White" BorderThickness="0.8" CornerRadius="5" Height="35" Margin="10,0,0,0" >
+                            <Button Content="Accept and Install"  FontSize="12" Click="click_ButtonAccptInstall" FontFamily="{StaticResource RubikRegular}" Foreground="#FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Left">
 
-                                    <Button.Style>
-                                        <Style TargetType="{x:Type Button}">
-                                            <Setter Property="Opacity" Value="0.9"/>
-                                            <Setter Property="BorderBrush" Value="White"/>
-                                            <Setter Property="BorderThickness" Value="1"/>
-                                            <!--<Setter Property="Background" Value="#662BC3"/>-->
-                                            <Setter Property="Background">
-                                                <Setter.Value>
-                                                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                                                        <GradientStop Color="#a6c94a" Offset="1.2"/>
-                                                        <GradientStop Color="#69be9b" Offset="0"/>
-                                                        <LinearGradientBrush.RelativeTransform>
-                                                            <RotateTransform Angle="85"/>
-                                                        </LinearGradientBrush.RelativeTransform>
-                                                    </LinearGradientBrush>
-                                                </Setter.Value>
-                                            </Setter>
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType="{x:Type Button}">
-                                                        <Border CornerRadius="5" Padding="25,10,25,10" Background="{TemplateBinding Background}" BorderBrush="#ffffff" BorderThickness="0.1">
-                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                        </Border>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                            <!--<Style.Triggers>
+                                <Button.Style>
+                                    <Style TargetType="{x:Type Button}">
+                                        <Setter Property="Opacity" Value="0.9"/>
+                                        <Setter Property="BorderBrush" Value="White"/>
+                                        <Setter Property="BorderThickness" Value="1"/>
+                                        <!--<Setter Property="Background" Value="#662BC3"/>-->
+                                        <Setter Property="Background">
+                                            <Setter.Value>
+                                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                                    <GradientStop Color="#a6c94a" Offset="1.2"/>
+                                                    <GradientStop Color="#69be9b" Offset="0"/>
+                                                    <LinearGradientBrush.RelativeTransform>
+                                                        <RotateTransform Angle="85"/>
+                                                    </LinearGradientBrush.RelativeTransform>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type Button}">
+                                                    <Border CornerRadius="5" Padding="25,10,25,10" Background="{TemplateBinding Background}" BorderBrush="#ffffff" BorderThickness="0.1">
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <!--<Style.Triggers>
                                             <Trigger Property="IsMouseOver" Value="True">
                                                 <Setter Property="Opacity" Value="1"/>
                                                 <Setter Property="Background">
                                                     <Setter.Value>
                                                         -->
-                                            <!--<LinearGradientBrush StartPoint="0,5" EndPoint="1,0.5">
+                                        <!--<LinearGradientBrush StartPoint="0,5" EndPoint="1,0.5">
                                 <GradientStop Color="#732EBB" Offset="0.55"/>
                                 <GradientStop Color="#EE466A" Offset="1"/>
                                 <GradientStop Color="#EE466A" Offset="1"/>
                                 <GradientStop Color="#EE466A" Offset="0.9"/>
                             </LinearGradientBrush>-->
-                                            <!--
+                                        <!--
                                                         <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
                                                             <GradientStop Color="#662BC3" Offset="1.2"/>
                                                             <GradientStop Color="#EE466A" Offset="0"/>
@@ -941,17 +1022,17 @@
                                                 </Setter>
                                             </Trigger>
                                         </Style.Triggers>-->
-                                        </Style>
-                                    </Button.Style>
-                                </Button>
-                            </Border>
-                        </StackPanel>
-                    </Grid>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </Border>
+                    </StackPanel>
                 </Grid>
-          
+            </Grid>
+
         </Grid>
-        
+
 
     </Grid>
-    
+
 </Window>

@@ -12,6 +12,7 @@
     <None Remove="favicon.ico" />
     <None Remove="Images\background.png" />
     <None Remove="Images\close.png" />
+    <None Remove="Images\completed.png" />
     <None Remove="Images\logo.png" />
     <None Remove="Images\startingimage.png" />
     <None Remove="Rubik\Rubik-Black.ttf" />
@@ -40,10 +41,17 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\close.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\logo.png" />
-    <Resource Include="Images\startingimage.png" />
+    <Resource Include="Images\completed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\startingimage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Rubik\Rubik-Black.ttf" />
     <Resource Include="Rubik\Rubik-BlackItalic.ttf" />
     <Resource Include="Rubik\Rubik-Bold.ttf" />
