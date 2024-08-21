@@ -1,21 +1,12 @@
 ﻿using Microsoft.Win32;
 using SocinatorInstaller.Utility;
-using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SocinatorInstaller
 {
@@ -24,9 +15,6 @@ namespace SocinatorInstaller
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        private bool isLaunch = true;
-        string[] installedInfo = new string[3];
-        string appName = "Social Dominator";
         private int NxtButtonCount = 1;
         private int BackButtonCount = 1;
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -34,7 +22,16 @@ namespace SocinatorInstaller
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
+        private string _defaultPath = InstallerConstants.GetDefaultIntallationPath;
+        public string DefaultPath
+        {
+            get => _defaultPath;
+            set
+            {
+                _defaultPath = value;
+                OnPropertyChanged(nameof(DefaultPath));
+            }
+        }
         private double _step1Opacity = 1.0;
 
         public double Step1Opacity
@@ -269,27 +266,12 @@ namespace SocinatorInstaller
         {
           Task.Factory.StartNew(async () =>
             {
-                filename = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"/Temp/power_installer.exe";
-               
-                //Process.Start(uri.AbsolutePath);
-                //await Task.Delay(15000);
-                //this.Dispatcher.Invoke(() =>
-                //{
-                //    txt_message.Text = "Intallation Completed";
-                //});
-                //return;
+                DirectoryUtility.CreateDirectory(DefaultPath);
+                this.Dispatcher.Invoke(() => filename = $"{DefaultPath}\\{InstallerConstants.ApplicationName}.exe");
                 try
                 {
                     await Task.Delay(2000);
-                    if (File.Exists(filename))
-                    {
-                        File.Delete(filename);
-                        File.Create(filename).Close();
-                    }
-                    else
-                    {
-                        File.Create(filename).Close();
-                    }
+                    FileUtility.CreateFile(filename);
                     WebClient wc = new WebClient();
                     wc.DownloadFileAsync(InstallerConstants.uri, filename);
                     wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(wc_DownloadProgressChanged);
@@ -495,7 +477,7 @@ namespace SocinatorInstaller
             var result = dialog.ShowDialog();
             if (result.Value)
             {
-                pathTextbox.Text = dialog.FolderName;
+                DefaultPath = dialog.FolderName;
             }
         }
 

@@ -215,7 +215,7 @@
                         <StackPanel VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="0" >
                             <TextBlock Text="Folder" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" FontSize="12" Foreground="#092E5A" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30,50,0,0"/>
                             <StackPanel Orientation="Horizontal" Margin="30 0">
-                                <TextBox x:Name="pathTextbox" VerticalContentAlignment="Center" Text="C:\Program Files [x86]\Socinator\Socinator\" Style="{StaticResource TextBoxWithCornerRadiusStyle}" Height="35" Width="200"/>
+                                <TextBox x:Name="pathTextbox" VerticalContentAlignment="Center" Text="{Binding DefaultPath,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxWithCornerRadiusStyle}" Height="35" Width="200"/>
                                 <Border BorderBrush="White" BorderThickness="0.8" CornerRadius="4" Height="35" Margin="-40 0 0 0">
                                     <Button Name="Browsebtn" Content="Browse..." FontSize="12" Height="35" Padding="10" Click="Browsebtn_Click" FontFamily="{StaticResource RubikRegular}" Foreground="#FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Left">
                                         <Button.Style>
@@ -834,8 +834,8 @@ The installer is ready to install Socinator on your computer.
                                 </Button>
                             </Border>
 
-                            <Border x:Name="NextBtnBorder" Visibility="Visible"  Opacity="{Binding NextBtnOpacity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" BorderBrush="White" BorderThickness="0.8" CornerRadius="5" Height="35" HorizontalAlignment="Right">
-                                <Button Name="btn_Next" Content="Next >"  BorderThickness="1" BorderBrush="White" FontSize="12" Height="35" Padding="15,10,15,10" Click="click_NextBtn" FontFamily="{StaticResource RubikRegular}" Foreground="#FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Border x:Name="NextBtnBorder" Visibility="Visible"  Opacity="{Binding NextBtnOpacity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" BorderBrush="White" BorderThickness="0.8" CornerRadius="5" HorizontalAlignment="Right">
+                                <Button Name="btn_Next" Content="Next >" Width="{Binding ElementName=CancelBtn,Path=ActualWidth}" BorderThickness="1" BorderBrush="White" FontSize="12" Height="{Binding ElementName=CancelBtn,Path=ActualHeight}" Padding="15,10,15,10" Click="click_NextBtn" FontFamily="{StaticResource RubikRegular}" Foreground="#FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Center">
                                     <Button.Style>
                                         <Style TargetType="{x:Type Button}">
                                             <Setter Property="Background" Value="#092E5A"/>
