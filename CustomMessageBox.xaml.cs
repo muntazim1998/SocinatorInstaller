@@ -33,7 +33,6 @@ namespace SocinatorInstaller
             if (!string.IsNullOrEmpty(msg))
             {
                 txt_Message.Text = msg;
-                txt_Title.Text = "Message";
             }
         }
 

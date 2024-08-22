@@ -458,7 +458,7 @@ namespace SocinatorInstaller
 
         private void click_Cancel(object sender, RoutedEventArgs e)
         {
-
+            ShowMessageBoxModel(msg: "Are you sure you want to cancel the installation ?");
         }
 
         private void click_CancelBtn(object sender, RoutedEventArgs e)

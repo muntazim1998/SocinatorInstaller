@@ -117,43 +117,6 @@
 
 
         <Grid Grid.Column="1" >
-
-            <Grid VerticalAlignment="Top" Margin="15,15" HorizontalAlignment="Right">
-                <Button FontSize="14" ToolTip="Close" Height="15" Width="15" Padding="15,10,15,10" Click="click_CloseBtn" FontFamily="{StaticResource RubikLight}" Foreground="#FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Left">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Opacity" Value="0.5"/>
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <ImageBrush ImageSource="Images/close.png"/>
-                                </Setter.Value>
-                            </Setter>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="Button">
-                                        <Grid Background="{TemplateBinding Background}">
-                                            <ContentPresenter />
-                                        </Grid>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background">
-                                        <Setter.Value>
-                                            <ImageBrush ImageSource="Images/close.png"/>
-                                        </Setter.Value>
-
-                                    </Setter>
-                                    <Setter Property="Opacity" Value="1"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
-            </Grid>
-
-
             <Border CornerRadius="15" Background="White" Margin="15,30,30,30">
 
                 <Grid x:Name="MainGrid" >

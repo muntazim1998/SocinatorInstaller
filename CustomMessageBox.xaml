@@ -9,13 +9,13 @@
              d:DesignHeight="150" d:DesignWidth="300">
     <Border CornerRadius="5" BorderThickness="0" Background="WhiteSmoke" >
         <Grid Background="Transparent" Margin="0,48,0,0" Width="Auto" Height="Auto">
-            <TextBlock Name="txt_Title" Text="Confirmation" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="#2e3e60" Foreground="WhiteSmoke"  FontFamily="{StaticResource RubikBold}" FontWeight="Bold" Height="30" Padding="10,8,5,25"/>
+            <TextBlock Name="txt_Title" Text="Confirmation" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="#092E5A" Foreground="WhiteSmoke"  FontFamily="{StaticResource RubikBold}" FontWeight="Bold" Height="30" Padding="10,8,5,25"/>
             <TextBlock Name="txt_Message" TextWrapping="Wrap" Text="Are you sure want to close application ?" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Black" FontFamily="{StaticResource RubikBold}" Height="50" Padding="15"/>
             <StackPanel Name="dpTitleBar" Background="Transparent" Orientation="Horizontal" Margin="5,55,15,5" HorizontalAlignment="Right">
                 <Button Name="btnYes" Content="Yes" Click="clk_Yes" DockPanel.Dock="Bottom" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="WhiteSmoke" FontFamily="{StaticResource RubikRegular}" Height="24" Width="75">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="#2e3e60"/>
+                            <Setter Property="Background" Value="#092E5A"/>
                             <Setter Property="Opacity" Value="0.9"/>
                             <Setter Property="BorderBrush" Value="#FFFFFF"/>
                             <Setter Property="BorderThickness" Value="1"/>
@@ -58,7 +58,7 @@
                 <Button Name="btnNo" Content="No" Click="clk_No" DockPanel.Dock="Bottom" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,0,0,0" Foreground="WhiteSmoke" FontFamily="{StaticResource RubikRegular}" Height="24" Width="75">
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="#2e3e60"/>
+                            <Setter Property="Background" Value="#092E5A"/>
                             <Setter Property="Opacity" Value="0.9"/>
                             <Setter Property="BorderBrush" Value="#FFFFFF"/>
                             <Setter Property="BorderThickness" Value="1"/>
