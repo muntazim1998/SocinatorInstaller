@@ -4,13 +4,14 @@ namespace SocinatorInstaller.Utility
 {
     public static class DirectoryUtility
     {
-        public static void CreateDirectory(string Path)
+        public static bool CreateDirectory(string Path)
         {
             try
             {
                 if(!Directory.Exists(Path))
                     Directory.CreateDirectory(Path);
-            }catch{ }
+                return true;
+            }catch{ return false; }
         }
     }
 }

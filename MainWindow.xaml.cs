@@ -203,6 +203,12 @@ namespace SocinatorInstaller
             }
             else if (NxtButtonCount == 2)
             {
+                var Created = DirectoryUtility.CreateDirectory(DefaultPath = $"{DefaultPath}\\{InstallerConstants.ApplicationName}");
+                if (!Created)
+                {
+                    txt_message.Text = "Unable To Install At Selected Location,Please Select Another Location";
+                    return;
+                }
                 DownloadOptionGrid.Visibility = Visibility.Collapsed;
                 ConfirmationGrid.Visibility = Visibility.Visible;
                 Step2Width = 20;
@@ -266,7 +272,6 @@ namespace SocinatorInstaller
         {
           Task.Factory.StartNew(async () =>
             {
-                DirectoryUtility.CreateDirectory(DefaultPath);
                 this.Dispatcher.Invoke(() => filename = $"{DefaultPath}\\{InstallerConstants.ApplicationName}.exe");
                 try
                 {

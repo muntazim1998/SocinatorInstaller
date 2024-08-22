@@ -606,13 +606,13 @@ The installer is ready to install Socinator on your computer.
                                                                 </VisualStateGroup>
                                                             </VisualStateManager.VisualStateGroups>
                                                             <Border x:Name="PART_Track" CornerRadius="5" Background="#FFFFFF" BorderThickness="0"
-                    BorderBrush="#6699cc">
+                                                                    BorderBrush="#6699cc">
                                                             </Border>
 
                                                             <Border CornerRadius="5" BorderThickness="0" x:Name="PART_Indicator"
-                    HorizontalAlignment="Left" Background="#EE466A"
-                    BorderBrush="Transparent"
-                    Margin="0,0,0,0">
+                                                                    HorizontalAlignment="Left" Background="#EE466A"
+                                                                    BorderBrush="Transparent"
+                                                                    Margin="0,0,0,0">
                                                             </Border>
                                                         </Grid>
                                                     </ControlTemplate>
