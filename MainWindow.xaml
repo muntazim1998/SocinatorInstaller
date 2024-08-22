@@ -166,21 +166,21 @@
                         </Grid.RowDefinitions>
                         <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0">
                             <TextBlock Text="Select Installation Folder" TextAlignment="Center" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" FontSize="18" Foreground="#22357A" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                            <TextBlock Padding="25,0,25,0" TextAlignment="Center"  TextWrapping="Wrap" Block.LineStackingStrategy="BlockLineHeight" Block.LineHeight="25"  FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" Foreground="#000000" VerticalAlignment="Top" HorizontalAlignment="Center">
+                            <TextBlock Padding="25,0,25,0" TextAlignment="Center" Opacity="0.8" TextWrapping="Wrap" Block.LineStackingStrategy="BlockLineHeight" Block.LineHeight="25"  FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" Foreground="#000000" VerticalAlignment="Top" HorizontalAlignment="Center">
                            The installer will install Socinator to the following folder.
                             </TextBlock>
                         </StackPanel>
                         <StackPanel  VerticalAlignment="Top" HorizontalAlignment="Center"  Grid.Row="2" Grid.Column="0">
-                            <TextBlock Padding="25,0,25,0" TextAlignment="Center"  TextWrapping="Wrap" Block.LineStackingStrategy="BlockLineHeight" Block.LineHeight="25"  FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" Foreground="#000000" VerticalAlignment="Top" HorizontalAlignment="Center">
-                                To install in this folder, click <Run Foreground="#092E5A">“Next”</Run>. To install to a different folder , enter it below or click <Run Foreground="#092E5A">“Browse”</Run>
+                            <TextBlock Padding="25,0,25,0" Opacity="0.8" TextAlignment="Center"  TextWrapping="Wrap" Block.LineStackingStrategy="BlockLineHeight" Block.LineHeight="25"  FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" Foreground="#000000" VerticalAlignment="Top" HorizontalAlignment="Center">
+                                To install in this folder, click <Run FontFamily="{StaticResource RubikMedium}" FontWeight="Medium" Foreground="#092E5A">“Next”</Run>. To install to a different folder , enter it below or click <Run FontFamily="{StaticResource RubikMedium}" FontWeight="Medium" Foreground="#092E5A">“Browse”</Run>
                             </TextBlock>
                         </StackPanel>
                         <StackPanel VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="0" >
-                            <TextBlock Text="Folder" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" FontSize="12" Foreground="#092E5A" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30,50,0,0"/>
+                            <TextBlock Text="Folder" FontFamily="{StaticResource RubikRegular}" Opacity="0.8" FontWeight="Normal" FontSize="12" Foreground="#092E5A" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30,50,0,0"/>
                             <StackPanel Orientation="Horizontal" Margin="30 0">
-                                <TextBox x:Name="pathTextbox" VerticalContentAlignment="Center" Text="{Binding DefaultPath,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxWithCornerRadiusStyle}" Height="35" Width="200"/>
-                                <Border BorderBrush="White" BorderThickness="0.8" CornerRadius="4" Height="35" Margin="-40 0 0 0">
-                                    <Button Name="Browsebtn" Content="Browse..." FontSize="12" Height="35" Padding="10" Click="Browsebtn_Click" FontFamily="{StaticResource RubikRegular}" Foreground="#FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <TextBox x:Name="pathTextbox" VerticalContentAlignment="Center" Text="{Binding DefaultPath,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBoxWithCornerRadiusStyle}" Height="30" Width="225"/>
+                                <Border BorderBrush="White" BorderThickness="0.8" CornerRadius="4" Height="32" Margin="-40 0 0 0">
+                                    <Button Name="Browsebtn" Content="Browse..." FontSize="10" Height="32" Padding="8" Click="Browsebtn_Click" FontFamily="{StaticResource RubikRegular}" Foreground="#FFFFFF" BorderBrush="White" BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Left">
                                         <Button.Style>
                                             <Style TargetType="{x:Type Button}">
                                                 <Setter Property="Background" Value="#092E5A"/>
@@ -190,7 +190,7 @@
                                                 <Setter Property="Template">
                                                     <Setter.Value>
                                                         <ControlTemplate TargetType="{x:Type Button}">
-                                                            <Border CornerRadius="5" Padding="10" Background="{TemplateBinding Background}" BorderBrush="#ffffff" BorderThickness="0.1">
+                                                            <Border CornerRadius="5" Padding="8" Background="{TemplateBinding Background}" BorderBrush="#ffffff" BorderThickness="0.1">
                                                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                             </Border>
                                                         </ControlTemplate>
@@ -202,8 +202,8 @@
                                         </Button.Style>
                                     </Button>
                                 </Border>
-                                <Border BorderBrush="#092E5A" BorderThickness="0.8" CornerRadius="4" Height="35" Margin="5">
-                                    <Button Name="DiskCostBtn" Content="Disk Cost..." FontSize="12" Height="35" Padding="10" Click="DiskCostBtn_Click" FontFamily="{StaticResource RubikRegular}" Foreground="#092E5A" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <Border BorderBrush="#092E5A" BorderThickness="0.8" CornerRadius="4"  Height="30" Margin="5">
+                                    <Button Name="DiskCostBtn" Content="Disk Cost..." FontSize="10" Height="30" Padding="8" Click="DiskCostBtn_Click" FontFamily="{StaticResource RubikRegular}" Foreground="#092E5A" VerticalAlignment="Center" HorizontalAlignment="Left">
                                         <Button.Style>
                                             <Style TargetType="{x:Type Button}">
                                                 <Setter Property="Background" Value="#FFFFFF"/>
@@ -213,7 +213,7 @@
                                                 <Setter Property="Template">
                                                     <Setter.Value>
                                                         <ControlTemplate TargetType="{x:Type Button}">
-                                                            <Border CornerRadius="5" Padding="10" Background="{TemplateBinding Background}" BorderBrush="#ffffff" BorderThickness="0.1">
+                                                            <Border CornerRadius="5" Padding="8" Background="{TemplateBinding Background}" BorderBrush="#ffffff" BorderThickness="0.1">
                                                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                             </Border>
                                                         </ControlTemplate>
@@ -229,7 +229,7 @@
                             <TextBlock Padding="20,0,25,0"  TextWrapping="Wrap" Block.LineStackingStrategy="BlockLineHeight" Block.LineHeight="25"  FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" Foreground="#000000" VerticalAlignment="Top" HorizontalAlignment="Center">
                            Install Socinator for yourself, or for anyone who uses this computer.
                             </TextBlock>
-
+                            <TextBlock Name="txt_message"  Visibility="Collapsed" Margin="0,20,0,0" FontFamily="{DynamicResource RubikLight}" Foreground="#FFFFFF" FontWeight="Thin" FontSize="14"/>
                             <RadioButton Name="EveryOneBtn" Content="Everyone" FontFamily="{StaticResource RubikRegular}" FontSize="12" Margin="30,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="False"/>
                             <RadioButton Name="JustMeBtn"  Content="Just me" FontFamily="{StaticResource RubikRegular}" FontSize="12" Margin="30,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="True"/>
                         </StackPanel>
@@ -240,7 +240,7 @@
                         <StackPanel >
                             <TextBlock Text="Confirm Installation" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" FontSize="18" Foreground="#22357A" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                             <TextBlock Margin="20 10 20 10" TextAlignment="Center" TextWrapping="Wrap" Block.LineStackingStrategy="BlockLineHeight" Block.LineHeight="20"  FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" Opacity="0.8" Foreground="#000000" VerticalAlignment="Top" HorizontalAlignment="Center">
-                            Socinator has been successfully installed
+                            The installer is ready to install Socinator on your computer.
                             </TextBlock>
                             <TextBlock Margin="20 0" TextAlignment="Center" TextWrapping="Wrap" Opacity="0.8" Block.LineStackingStrategy="BlockLineHeight" Block.LineHeight="20"  FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" Foreground="#000000" VerticalAlignment="Top" HorizontalAlignment="Center">
                                 <Run Text="Click " FontFamily="{StaticResource RubikRegular}" FontWeight="Normal"/>
@@ -322,12 +322,12 @@
                             <StackPanel Margin="0,20,0,0" >
                                 <TextBlock Text="Installation Completed" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" FontSize="18" Foreground="#22357A" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                                 <TextBlock Margin="20 10 20 10" TextAlignment="Center" TextWrapping="Wrap" Block.LineStackingStrategy="BlockLineHeight" Block.LineHeight="20"  FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" Opacity="0.8" Foreground="#000000" VerticalAlignment="Top" HorizontalAlignment="Center">
-The installer is ready to install Socinator on your computer.
+                               Socinator has been successfully installed      
                                 </TextBlock>
                                 <TextBlock  TextAlignment="Center" TextWrapping="Wrap" Opacity="0.8" Block.LineStackingStrategy="BlockLineHeight" Block.LineHeight="10"  FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal" Foreground="#000000" VerticalAlignment="Top" HorizontalAlignment="Center">
-    <Run Text="Click " FontFamily="{StaticResource RubikRegular}" FontWeight="Normal"/>
-    <Run Text="“Close”" FontFamily="{StaticResource RubikMedium}" FontSize="12" Foreground="#092E5A" FontWeight="Medium"/>
-    <Run Text=" to exit." FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal"/>
+                             <Run Text="Click " FontFamily="{StaticResource RubikRegular}" FontWeight="Normal"/>
+                              <Run Text="“Close”" FontFamily="{StaticResource RubikMedium}" FontSize="12" Foreground="#092E5A" FontWeight="Medium"/>
+                                 <Run Text=" to exit." FontSize="12" FontFamily="{StaticResource RubikRegular}" FontWeight="Normal"/>
                                 </TextBlock>
                             </StackPanel>
                         </StackPanel>
@@ -536,107 +536,6 @@ The installer is ready to install Socinator on your computer.
                                 </Border>
                             </StackPanel>
                         </Grid>
-                    </Grid>
-                    <Grid Grid.Row="1" Name="DownloaderGrid" Visibility="Collapsed">
-                        <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center">
-
-                            <TextBlock Text="Socinator : Social Media Automation Tool" Margin="0,0,0,20" FontFamily="{DynamicResource RubikBold}" Foreground="#FFFFFF" FontWeight="SemiBold" FontSize="32"/>
-                            <Grid>
-                                <ProgressBar Name="customProgressStyle" Width="500" Value="0" Maximum="100" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                    <ProgressBar.Style>
-                                        <Style TargetType="{x:Type ProgressBar}">
-                                            <Setter Property="Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType="{x:Type ProgressBar}">
-                                                        <Grid Height="12" MinWidth="50" Background="Transparent">
-                                                            <VisualStateManager.VisualStateGroups>
-                                                                <VisualStateGroup x:Name="CommonStates">
-                                                                    <VisualState x:Name="Determinate" />
-                                                                    <VisualState x:Name="Indeterminate">
-                                                                        <Storyboard>
-                                                                            <ObjectAnimationUsingKeyFrames Duration="00:00:00"
-                                                           Storyboard.TargetName="PART_Indicator"
-                                                           Storyboard.TargetProperty="Background">
-                                                                                <DiscreteObjectKeyFrame KeyTime="00:00:00">
-                                                                                    <DiscreteObjectKeyFrame.Value>
-                                                                                        <SolidColorBrush>Transparent</SolidColorBrush>
-                                                                                    </DiscreteObjectKeyFrame.Value>
-                                                                                </DiscreteObjectKeyFrame>
-                                                                            </ObjectAnimationUsingKeyFrames>
-
-                                                                        </Storyboard>
-                                                                    </VisualState>
-                                                                </VisualStateGroup>
-                                                            </VisualStateManager.VisualStateGroups>
-                                                            <Border x:Name="PART_Track" CornerRadius="5" Background="#FFFFFF" BorderThickness="0"
-                                                                    BorderBrush="#6699cc">
-                                                            </Border>
-
-                                                            <Border CornerRadius="5" BorderThickness="0" x:Name="PART_Indicator"
-                                                                    HorizontalAlignment="Left" Background="#EE466A"
-                                                                    BorderBrush="Transparent"
-                                                                    Margin="0,0,0,0">
-                                                            </Border>
-                                                        </Grid>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                            <Setter Property="Background" Value="#FFFFFF" />
-                                            <Setter Property="Foreground" Value="Transparent" />
-                                        </Style>
-                                    </ProgressBar.Style>
-                                </ProgressBar>
-                            </Grid>
-                            <TextBlock Name="txt_message" Text="" Margin="0,20,0,0" FontFamily="{DynamicResource RubikLight}" Foreground="#FFFFFF" FontWeight="Thin" FontSize="14"/>
-                        </StackPanel>
-                        <Button Name="btn_Retry" Content="Retry" Visibility="Collapsed" Margin="0,0,150,50" FontSize="12" Height="35" Padding="15,10,15,10" Click="click_ButtonAccptInstall" FontFamily="{StaticResource RubikRegular}" Foreground="#FFFFFF" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                            <Button.Style>
-                                <Style TargetType="{x:Type Button}">
-                                    <Setter Property="Background" Value="#2e3e60"/>
-                                    <Setter Property="Opacity" Value="0.9"/>
-                                    <Setter Property="BorderBrush" Value="#FFFFFF"/>
-                                    <Setter Property="BorderThickness" Value="1"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border CornerRadius="5" Padding="25,10,25,10" Background="{TemplateBinding Background}" BorderBrush="#ffffff" BorderThickness="0.1">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-
-                                        </Setter.Value>
-
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property="IsEnabled" Value="False">
-                                            <Setter Property="Opacity" Value="0.5"/>
-                                            <Setter Property="BorderBrush" Value="#FFFFFF"/>
-                                            <Setter Property="BorderThickness" Value="0"/>
-                                        </Trigger>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background">
-                                                <Setter.Value>
-                                                    <!--<LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
-                                    <GradientStop Color="#662BC3" Offset="0.1"/>
-                                    <GradientStop Color="#EE466A" Offset="1.0"/>
-                        </LinearGradientBrush>-->
-                                                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                                                        <GradientStop Color="#a6c94a" Offset="1.2"/>
-                                                        <GradientStop Color="#69be9b" Offset="0"/>
-                                                        <LinearGradientBrush.RelativeTransform>
-                                                            <RotateTransform Angle="85"/>
-                                                        </LinearGradientBrush.RelativeTransform>
-                                                    </LinearGradientBrush>
-                                                </Setter.Value>
-                                            </Setter>
-                                            <Setter Property="Opacity" Value="1"/>
-                                            <Setter Property="BorderBrush" Value="#FFFFFF"/>
-                                            <Setter Property="BorderThickness" Value="0"/>
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Button.Style>
-                        </Button>
                     </Grid>
                     <Grid Grid.Row="3" x:Name="ButtonGrid">
                         <Grid.RowDefinitions>

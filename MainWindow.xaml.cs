@@ -380,7 +380,7 @@ namespace SocinatorInstaller
 
         private void click_CloseBtn(object sender, RoutedEventArgs e)
         {
-            ShowMessageBoxModel();
+            App.Current.Shutdown();
         }
 
         private void click_UpgradeBtn(object sender, RoutedEventArgs e)
@@ -450,10 +450,7 @@ namespace SocinatorInstaller
             };
             msgBox.MyWindow = window;
             window.Content = msgBox;
-            if (isAsync)
-                window.ShowDialog();
-            else
-                window.Show();
+            window.ShowDialog();
         }
 
         private void click_Cancel(object sender, RoutedEventArgs e)
