@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using SocinatorInstaller.Utility;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Runtime.CompilerServices;
@@ -171,7 +172,9 @@ namespace SocinatorInstaller
                 }
             }
         }
-
+        private bool IsLaunch = true;
+        string[] installedInfo = new string[3];
+        private static string UninstallString= string.Empty;
         public MainWindow()
         {
             InitializeComponent();
@@ -184,9 +187,88 @@ namespace SocinatorInstaller
             gradientRectangle2.Fill = gradientBrush;
             gradientRectangle3.Fill = gradientBrush;
             gradientRectangle4.Fill = gradientBrush;
+            installedInfo = checkInstalled("Socinator");
+           if (!string.IsNullOrEmpty(installedInfo[1]))
+            {
+                UninstallString = installedInfo[1];
+                StartGrid.Visibility = Visibility.Collapsed;
+                ButtonGrid.Visibility = Visibility.Collapsed;
+                alreadyInstalled.Visibility = Visibility.Visible;
+            }
+        }
+        public string[] checkInstalled(string findByName)
+        {
+            #region Commented_NotRequiredForBraveExeInstallation
+            string[] info = new string[3];
+
+            try
+            {
+                string registryKey = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall";
+
+                //64 bits computer
+                RegistryKey key64 = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Default);
+                RegistryKey key = key64.OpenSubKey(registryKey);
+
+                if (key != null)
+                {
+                    foreach (RegistryKey subkey in key.GetSubKeyNames().Select(keyName => key.OpenSubKey(keyName)))
+                    {
+                        string displayName = subkey.GetValue("DisplayName") as string;
+                        if (displayName != null && displayName.Equals(findByName))
+                        {
+                            info[0] = displayName;
+
+                            info[1] = subkey.GetValue("InstallLocation").ToString();
+
+                            info[2] = subkey.GetValue("DisplayVersion").ToString();
+                        }
+                    }
+                    key.Close();
+                }
+                if (info[0] ==null)
+                {
+                    registryKey = @"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall";
+                     key64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Default);
+                    key = key64.OpenSubKey(registryKey);
+
+                    if (key != null)
+                    {
+                        foreach (RegistryKey subkey in key.GetSubKeyNames().Select(keyName => key.OpenSubKey(keyName)))
+                        {
+                            string displayName = subkey.GetValue("DisplayName") as string;
+                            if (displayName != null && displayName.Equals(findByName))
+                            {
+                                info[0] = displayName;
+
+                                info[1] = subkey.GetValue("UninstallString").ToString();
+
+                                info[2] = subkey.GetValue("DisplayVersion").ToString();
+                            }
+                            //subkey.DeleteSubKey("Power");
+                        }
+                        key.Close();
+                    }
+
+                }
+
+            }
+            catch (Exception)
+            {
+
+            }
+            return info;
+            #endregion
+
+            //string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            //string startmenu = Environment.GetFolderPath(Environment.SpecialFolder.StartMenu);
+            //string dlink = System.IO.Path.Combine(desktopPath, "Power.lnk");
+            //string slink = System.IO.Path.Combine(startmenu, "Power.lnk");
+            //if (System.IO.File.Exists(dlink))
+            //    return true;
+            //else
+            //    return false;
 
         }
-
         private  void click_NextBtn(object sender, RoutedEventArgs e)
         {
             if (NxtButtonCount == 1)
@@ -420,11 +502,95 @@ namespace SocinatorInstaller
 
         }
 
-        private void click_Uninstall(object sender, RoutedEventArgs e)
+        private async void click_Uninstall(object sender, RoutedEventArgs e)
         {
+            bool isOpen = await CheckByProcess();
+            if (isOpen)
+            {
 
+                await App.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    ShowMessageBoxModel(msg: InstallerConstants.ConfirmationMessageForClosing );
+                });
+                return;
+            }
+            await  ExecuteUninstallString();
+            UninstallingProgressStackPanel.Visibility = Visibility.Visible;
+            while(UninstallingProgressStyle.Value < UninstallingProgressStyle.Maximum)
+            {
+                await Task.Delay(80);
+                UninstallingProgressStyle.Value += 1;
+            }
+            await Task.Delay(500);
+            App.Current.Shutdown();
         }
+        private async Task<bool> CheckByProcess()
+        {
+            try
+            {
+                var existed = false;
+                var dd = Process.GetProcessesByName(InstallerConstants.ApplicationName);
+                var processess = Process.GetProcesses();
+                foreach (var item in dd)
+                {
+                    try
+                    {
+                        if (!item.ProcessName.Equals(InstallerConstants.ApplicationName))
+                            continue;
+                        existed = true;
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        /* ignored */
+                    }
+                }
 
+                return existed;
+            }
+            catch
+            { return false; }
+        }
+        private async Task ExecuteUninstallString()
+        {
+            try
+            {
+                if (!UninstallString.Contains("/quiet") && !UninstallString.Contains("/silent"))
+                {
+                    UninstallString += " /quiet /norestart"; // Adjust flags as needed
+                }
+                UninstallString = UninstallString.Replace("/I", "/X");
+                // Add silent/unattended flags to the uninstall string if needed
+                ProcessStartInfo processInfo = new ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = $"/C {UninstallString}",
+                    CreateNoWindow = true, // Do not create a window
+                    UseShellExecute = false, // Do not use the OS shell to start the process
+                    WindowStyle = ProcessWindowStyle.Hidden, // Ensure no window is shown
+                    RedirectStandardOutput = true, // Redirect output to avoid showing anything
+                    RedirectStandardError = true // Redirect errors to avoid showing anything
+                };
+
+                using (Process process = Process.Start(processInfo))
+                {
+                    process.WaitForExit(); // Wait for the process to complete
+
+                    // Optionally capture and log output/error for debugging
+                    string output =await process.StandardOutput.ReadToEndAsync();
+                    string error = await process.StandardError.ReadToEndAsync();
+                }
+
+            }
+            catch (Exception ex)
+            {
+               
+            }
+        }
+        private async Task<bool> uninstall()
+        {
+            return true;
+        }
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
 
@@ -460,7 +626,7 @@ namespace SocinatorInstaller
 
         private void click_CancelBtn(object sender, RoutedEventArgs e)
         {
-
+            App.Current.Shutdown();
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)

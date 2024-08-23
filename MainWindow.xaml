@@ -334,41 +334,26 @@
 
                     </Grid>
                     <Grid Grid.Row="1" Name="alreadyInstalled" Visibility="Collapsed">
-                        <Grid Width="700" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50,10,10,10">
-                                <!--<Image Source="Images/white 2.png" Height="70" Width="70" HorizontalAlignment="Center"/>-->
-                                <TextBlock Text="Socinator : Social Media Automation Tool" Margin="0,15,0,0" FontFamily="{StaticResource RubikBold}" FontWeight="Bold" FontSize="24" Foreground="#FFFFFF" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,10,10">
+                                <TextBlock Text="Software is already installed" Margin="0,15,0,0" FontFamily="{StaticResource RubikRegular}" FontWeight="Regular" FontSize="22" Foreground="#22357A" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </StackPanel>
-                            <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,10,10,10">
-                                <TextBlock Name="txt_AlreadyInstalled" TextWrapping="Wrap" Margin="30,20,10,10" Text="Software is already installed." FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#FFFFFF" FontFamily="{StaticResource RubikRegular}"/>
-                                <TextBlock Name="txt_Update_Available" Text="Update Available : 1.0.0.0" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="#FFFFFF" FontWeight="Bold" FontFamily="{StaticResource RubikBold}"/>
-                            </StackPanel>
-                            <Grid Grid.Row="2">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="69*"/>
-                                    <ColumnDefinition Width="281*"/>
-                                </Grid.ColumnDefinitions>
-                                <ProgressBar Name="customProgressStyle1" Visibility="Collapsed" Width="500" Value="0" Maximum="100" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="100,45,100,45.4">
+                            <StackPanel Margin="0,50,0,0" x:Name="UninstallingProgressStackPanel" Visibility="Collapsed">
+                                <ProgressBar Name="UninstallingProgressStyle"  Visibility="Visible" Width="300" Value="0" Maximum="100" VerticalAlignment="Center" HorizontalAlignment="Center" ValueChanged="installingProgressStyle_ValueChanged">
                                     <ProgressBar.Style>
                                         <Style TargetType="{x:Type ProgressBar}">
                                             <Setter Property="Template">
                                                 <Setter.Value>
                                                     <ControlTemplate TargetType="{x:Type ProgressBar}">
-                                                        <Grid Height="12" MinWidth="50" Background="Transparent">
+                                                        <Grid Height="12" MinWidth="30" Background="#FFFFFF">
                                                             <VisualStateManager.VisualStateGroups>
                                                                 <VisualStateGroup x:Name="CommonStates">
                                                                     <VisualState x:Name="Determinate" />
                                                                     <VisualState x:Name="Indeterminate">
                                                                         <Storyboard>
                                                                             <ObjectAnimationUsingKeyFrames Duration="00:00:00"
-                                                           Storyboard.TargetName="PART_Indicator"
-                                                           Storyboard.TargetProperty="Background">
+                                                                                Storyboard.TargetName="PART_Indicator"
+                                                                               Storyboard.TargetProperty="Background">
                                                                                 <DiscreteObjectKeyFrame KeyTime="00:00:00">
                                                                                     <DiscreteObjectKeyFrame.Value>
                                                                                         <SolidColorBrush>Transparent</SolidColorBrush>
@@ -380,26 +365,39 @@
                                                                     </VisualState>
                                                                 </VisualStateGroup>
                                                             </VisualStateManager.VisualStateGroups>
-                                                            <Border x:Name="PART_Track" CornerRadius="5" Background="#FFFFFF" BorderThickness="0"
-                    BorderBrush="#6699cc">
+                                                            <Border x:Name="PART_Track" CornerRadius="5"  Opacity="0.5" BorderThickness="0"
+                                                        BorderBrush="Transparent" Height="12" VerticalAlignment="Top">
+                                                                <Border.Background>
+                                                                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                                                        <GradientStop Color="#a6c94a" Offset="1.2"/>
+                                                                        <GradientStop Color="#69be9b" Offset="0"/>
+                                                                    </LinearGradientBrush>
+                                                                </Border.Background>
                                                             </Border>
 
                                                             <Border CornerRadius="5" BorderThickness="0" x:Name="PART_Indicator"
-                    HorizontalAlignment="Left" Background="#6699cc"
-                    BorderBrush="Transparent"
-                    Margin="0,0,0,0">
+                                                         BorderBrush="Transparent" HorizontalAlignment="Left">
+                                                                <Border.Background>
+                                                                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                                                        <GradientStop Color="#a6c94a" Offset="1.2"/>
+                                                                        <GradientStop Color="#69be9b" Offset="0"/>
+                                                                    </LinearGradientBrush>
+                                                                </Border.Background>
                                                             </Border>
                                                         </Grid>
                                                     </ControlTemplate>
                                                 </Setter.Value>
                                             </Setter>
-                                            <Setter Property="Background" Value="#FFFFFF" />
+                                            <Setter Property="Background" Value="Transparent" />
                                             <Setter Property="Foreground" Value="Transparent" />
                                         </Style>
                                     </ProgressBar.Style>
                                 </ProgressBar>
-                            </Grid>
-                            <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Top" Margin="0,-40,0,0" HorizontalAlignment="Center">
+                                <TextBlock Text="Please wait uninstalling in progress..." Margin="40,15,0,0" FontFamily="{StaticResource RubikLight}" FontWeight="Medium" FontSize="15" Foreground="#22357A" VerticalAlignment="Center"/>
+                            </StackPanel>
+
+
+                            <StackPanel  Orientation="Horizontal" Margin="0,50,0,0" HorizontalAlignment="Center">
                                 <Border CornerRadius="5" BorderThickness="0.8,0.8,0,0.8" BorderBrush="White" Height="35" >
                                     <Button Name="btn_Upgrade" Visibility="Collapsed" Content="Upgrade" FontSize="12" Padding="15,10,15,10" Click="click_UpgradeBtn" FontFamily="{StaticResource RubikLight}" Foreground="#FFFFFF" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                                         <Button.Style>
@@ -447,11 +445,11 @@
                                         </Button.Style>
                                     </Button>
                                 </Border>
-                                <Border BorderBrush="White" BorderThickness="0.8" CornerRadius="5" Height="35" Margin="20,0,0,0">
-                                    <Button Name="btn_Uninstall" Visibility="Visible" Content="Uninstall" FontSize="12"  Padding="15,10,15,10" Click="click_Uninstall" FontFamily="{StaticResource RubikLight}" Foreground="#FFFFFF" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                                <Border BorderBrush="White" BorderThickness="0.8" CornerRadius="5" Height="35" Margin="0,0,0,0">
+                                    <Button Name="btn_Uninstall" Visibility="Visible" Content="Uninstall" FontSize="13"  Padding="15,10,15,10" Click="click_Uninstall" FontFamily="{StaticResource RubikRegular}" Foreground="#FFFFFF" VerticalAlignment="Top" HorizontalAlignment="Center">
                                         <Button.Style>
                                             <Style TargetType="{x:Type Button}">
-                                                <Setter Property="Background" Value="#2e3e60"/>
+                                                <Setter Property="Background" Value="#22357A"/>
                                                 <Setter Property="Opacity" Value="0.9"/>
                                                 <Setter Property="Template">
                                                     <Setter.Value>
@@ -490,32 +488,35 @@
                                         </Button.Style>
                                     </Button>
                                 </Border>
-                                <Border CornerRadius="5" BorderThickness="0.8" BorderBrush="White" Margin="10,0,0,0" Height="35">
-                                    <Button  Name="btn_Cancel" Content="Cancel" FontSize="12"  Padding="15,10,15,10" Click="click_CancelBtn" FontFamily="{StaticResource RubikRegular}" Foreground="#FFFFFF" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                                <Border x:Name="Cancel_BtnBorder" Visibility="Visible" Opacity="{Binding CancelBtnOpacity,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  BorderBrush="#092E5A" BorderThickness="2" CornerRadius="3" Height="32.5" Margin="30,0,0,0" HorizontalAlignment="Right">
+                                    <Button Name="btn_Cancel" Content="Cancel"  BorderThickness="0" BorderBrush="Transparent" FontSize="14" Height="32.5" Padding="15,10,15,10" Click="click_CancelBtn" FontFamily="{StaticResource RubikRegular}"
+                                      Foreground="#092E5A" VerticalAlignment="Center" HorizontalAlignment="Center">
                                         <Button.Style>
                                             <Style TargetType="{x:Type Button}">
-                                                <Setter Property="Background" Value="#2e3e60"/>
+                                                <Setter Property="Background" Value="#FFFFFF"/>
                                                 <Setter Property="Opacity" Value="0.9"/>
-                                                <Setter Property="BorderBrush" Value="#FFFFFF"/>
-                                                <Setter Property="BorderThickness" Value="1"/>
+                                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                                <Setter Property="BorderThickness" Value="0"/>
                                                 <Setter Property="Template">
                                                     <Setter.Value>
                                                         <ControlTemplate TargetType="{x:Type Button}">
-                                                            <Border CornerRadius="5" Padding="25,10,25,10" Background="{TemplateBinding Background}" BorderBrush="#ffffff" BorderThickness="0.1">
+                                                            <Border CornerRadius="5" Padding="25,5,25,5" Background="{TemplateBinding Background}" BorderBrush="#ffffff" BorderThickness="0.1">
                                                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                             </Border>
                                                         </ControlTemplate>
+
                                                     </Setter.Value>
 
                                                 </Setter>
                                                 <Style.Triggers>
+                                                    <Trigger Property="IsEnabled" Value="False">
+                                                        <Setter Property="Opacity" Value="0.5"/>
+                                                        <Setter Property="BorderBrush" Value="#FFFFFF"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                    </Trigger>
                                                     <Trigger Property="IsMouseOver" Value="True">
                                                         <Setter Property="Background">
                                                             <Setter.Value>
-                                                                <!--<LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                    <GradientStop Color="#732EBB" Offset="0.1"/>
-                    <GradientStop Color="#EE466A" Offset="1"/>
-                </LinearGradientBrush>-->
                                                                 <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
                                                                     <GradientStop Color="#a6c94a" Offset="1.2"/>
                                                                     <GradientStop Color="#69be9b" Offset="0"/>
@@ -535,7 +536,7 @@
                                     </Button>
                                 </Border>
                             </StackPanel>
-                        </Grid>
+                        </StackPanel>
                     </Grid>
                     <Grid Grid.Row="3" x:Name="ButtonGrid">
                         <Grid.RowDefinitions>
