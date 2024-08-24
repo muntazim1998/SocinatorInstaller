@@ -6,6 +6,7 @@ using System.IO;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
 
@@ -14,9 +15,12 @@ namespace SocinatorInstaller
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : UserControl, INotifyPropertyChanged
     {
         private int NxtButtonCount = 1;
+        private static Window CurrentWindow { get; set; }
+        private static MainWindow instance {  get; set; }
+
         private int BackButtonCount = 1;
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -34,7 +38,10 @@ namespace SocinatorInstaller
             }
         }
         private double _step1Opacity = 1.0;
-
+        public static UserControl GetInstance(Window window)
+        {
+            return instance ?? (instance = new MainWindow(window));
+        }
         public double Step1Opacity
         {
             get { return _step1Opacity; }
@@ -175,6 +182,10 @@ namespace SocinatorInstaller
         private bool IsLaunch = true;
         string[] installedInfo = new string[3];
         private static string UninstallString= string.Empty;
+        public MainWindow(Window window):this()
+        {
+            CurrentWindow = window;
+        }
         public MainWindow()
         {
             InitializeComponent();
