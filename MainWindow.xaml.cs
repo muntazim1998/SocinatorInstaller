@@ -369,7 +369,7 @@ namespace SocinatorInstaller
                 try
                 {
                     await Task.Delay(2000);
-                    FileUtility.CreateFile(filename);
+                    FileUtilities.CreateFile(filename);
                     WebClient wc = new WebClient();
                     wc.DownloadFileAsync(InstallerConstants.uri, filename);
                     wc.DownloadProgressChanged += new DownloadProgressChangedEventHandler(wc_DownloadProgressChanged);
